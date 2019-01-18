@@ -5,10 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = {"com.tinklabs"}, exclude = {})
 @Slf4j
-public class RuleserverApplication {
+public class LocationServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RuleserverApplication.class, args);
+        SpringApplication.run(LocationServiceApplication.class, args);
     }
 
 }
