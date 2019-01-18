@@ -9,13 +9,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.tinklabs</groupId>
-    <artifactId>ruleserver</artifactId>
+    <artifactId>location-service</artifactId>
     <version>1.0.0</version>
-    <name>ruleserver</name>
-    <description>ruleserver project for TinkLabs loyality points</description>
+    <name>location-service</name>
+    <description>provide location related api</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <docker.image.prefix>tinklabs</docker.image.prefix>
     </properties>
     <developers>
         <developer>
@@ -88,6 +89,22 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <!--<finalName>${project.name}</finalName>-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.7</version>
+                <configuration>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
             </plugin>
         </plugins>
     </build>

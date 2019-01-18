@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tinklabs.mapper.CityMapper">
+
+    <resultMap id="BaseResultMap" type="com.tinklabs.entity.City">
+        <result column="geoname_id" property="geonameId"/>
+        <result column="locale_code" property="localeCode"/>
+        <result column="continent_code" property="continentCode"/>
+        <result column="continent_name" property="continentName"/>
+        <result column="country_iso_Code" property="countryCode"/>
+        <result column="country_name" property="countryName"/>
+        <result column="subdivision_1_iso_code" property="subdivisionISOCode"/>
+        <result column="subdivision_1_name" property="subdivision1Name"/>
+        <result column="subdivision_2_iso_code" property="subdivision2ISOCode"/>
+        <result column="subdivision_2_name" property="subdivision2Name"/>
+        <result column="city_name" property="cityName"/>
+        <result column="metro_code" property="metroCode"/>
+        <result column="time_zone" property="timeZone"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        geoname_id,locale_code,continent_code,continent_name,country_iso_Code,country_name,subdivision_1_iso_code,
+        subdivision_1_name,subdivision_2_iso_code,subdivision_2_name,city_name,metro_code,time_zone
+    </sql>
+
+    <select id="queryCityList" resultType="com.tinklabs.vo.CityVo">
+        SELECT
+        `geoname_id` AS geonameId,
+        `locale_code` AS localeCode,
+        `continent_code` AS continentCode,
+        `continent_name` AS continentName,
+        `country_iso_Code` AS countryCode,
+        `country_name` AS countryName,
+        `subdivision_1_iso_code` AS subdivisionISOCode,
+        `subdivision_1_name` AS subdivision1Name,
+        `subdivision_2_iso_code` AS subdivision2ISOCode,
+        `subdivision_2_name` AS subdivision2Name,
+        `city_name` AS cityName,
+        `metro_code` AS metroCode,
+        `time_zone` AS timeZone
+        FROM city_full t
+        WHERE 1=1
+        AND t.locale_code = #{localeCode}
+        AND t.country_iso_code = #{countryCode}
+    </select>
+</mapper>

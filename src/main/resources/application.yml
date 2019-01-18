@@ -26,11 +26,11 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
 server:
-  port: ${SERVER_PORT:8086}
+  port: ${SERVER_PORT:8088}
 spring:
   datasource:
     druid:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:drools}?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:location_service3}?useUnicode=true&characterEncoding=utf8&autoReconnect=false&rewriteBatchedStatements=TRUE
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:admin123}

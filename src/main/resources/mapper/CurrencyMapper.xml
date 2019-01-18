@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tinklabs.mapper.CurrencyMapper">
+
+    <resultMap id="BaseResultMap" type="com.tinklabs.entity.Currency">
+        <result column="locale_code" property="localeCode"/>
+        <result column="currency_code" property="currencyCode"/>
+        <result column="currency_name" property="currencyName"/>
+        <result column="symbol" property="symbol"/>
+        <result column="country_code" property="countryCode"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        locale_code,currency_code,currency_name,symbol,country_name,country_code
+    </sql>
+
+    <select id="queryCurrency" resultType="com.tinklabs.vo.CurrencyVo">
+        SELECT
+        `locale_code` AS localeCode,
+        `currency_code` AS currencyCode,
+        `currency_name` AS currencyName,
+        `symbol` AS symbol,
+        `country_code` AS country_code
+        FROM currency_full t
+        WHERE 1=1
+        AND t.locale_code = #{localeCode}
+        AND t.country_code = #{countryCode}
+    </select>
+</mapper>
